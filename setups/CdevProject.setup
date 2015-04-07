@@ -94,6 +94,7 @@
     <setupTask
         xsi:type="git:GitCloneTask"
         id="git.clone.oomph.uri"
+        location="https://github.com/toshovski/oomph-cdev.git"
         remoteURI="https://github.com/toshovski/oomph-cdev.git"
         checkoutBranch="master"/>
     <setupTask
