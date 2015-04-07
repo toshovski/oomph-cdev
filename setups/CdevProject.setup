@@ -94,8 +94,6 @@
           rootFolder="${git.clone.oomph.uri.location}"/>
     </setupTask>
   </setupTask>
-  <setupTask
-      xsi:type="setup:ResourceCopyTask"/>
   <stream name="master"/>
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
