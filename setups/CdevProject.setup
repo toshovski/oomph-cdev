@@ -85,7 +85,7 @@
     <setupTask
         xsi:type="git:GitCloneTask"
         id="git.clone.oomph.uri"
-        location="https://github.com/toshovski/oomph-cdev.git"
+        location="oomph-cdev"
         remoteURI="https://github.com/toshovski/oomph-cdev.git"
         checkoutBranch="master"/>
     <setupTask
@@ -94,6 +94,8 @@
           rootFolder="${git.clone.oomph.uri.location}"/>
     </setupTask>
   </setupTask>
+  <setupTask
+      xsi:type="setup:ResourceCopyTask"/>
   <stream name="master"/>
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
