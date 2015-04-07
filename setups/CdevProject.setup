@@ -90,7 +90,8 @@
     <setupTask
         xsi:type="projects:ProjectsImportTask">
       <sourceLocator
-          rootFolder="${git.clone.oomph.uri.location}/setups/"/>
+          rootFolder="${git.clone.oomph.uri.location}"
+          locateNestedProjects="true"/>
     </setupTask>
   </setupTask>
   <stream name="master"/>
