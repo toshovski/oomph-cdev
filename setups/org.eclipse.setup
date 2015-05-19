@@ -35,12 +35,8 @@
       href="http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Workbench.ecore#/"/>
   <discoverablePackage
       href="http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/WorkingSets.ecore#/"/>
-  <!--productCatalog
-      href="catalog:/self-product-catalog.setup#/"/-->
   <productCatalog
-      href="my.products.setup#/"/>
+      href="de.abas.cdev.products.setup#/"/>
   <projectCatalog
-      href="my.projects.setup#/"/>
-  <!--projectCatalog
-      href="com.github.projects.setup#/"/-->
+      href="de.abas.cdev.projects.setup#/"/>
 </setup:Index>
