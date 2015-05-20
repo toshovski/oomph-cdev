@@ -239,6 +239,9 @@
     <requirement
         name="org.eclipse.pde.api.tools.ee.feature.feature.group"
         optional="true"/>
+    <requirement
+        name="com.googlecode.cppcheclipse.feature.feature.group"
+        versionRange="1.0.0"/>
     <repository
         url="http://download.eclipse.org/modeling/emf/emf/updates/nightly/core"/>
     <repository
@@ -247,6 +250,8 @@
         url="http://download.eclipse.org/mylyn/snapshots/weekly"/>
     <repository
         url="${oomph.update.url}"/>
+    <repository
+        url="http://cppcheclipse.eclipselabs.org.codespot.com/svn/update/"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
