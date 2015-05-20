@@ -94,7 +94,6 @@
           locateNestedProjects="true"/>
     </setupTask>
   </setupTask>
-  <stream name="master"/>
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
       href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']"/>
