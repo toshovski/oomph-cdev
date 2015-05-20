@@ -258,10 +258,8 @@
         key="/instance/org.eclipse.mylyn.team.ui/org.eclipse.mylyn.team.commit.template"
         value="[$${task.key}] $${task.description}&#xD;&#xA;&#xD;&#xA;$${task.url}"/>
   </setupTask>
-  <project name="GeneralContainer"
-      label="General">
-    <project
-        name="de.abas.cdev.projects.setup"/>
-  </project>
+  <project name="abas.erp"
+      label="abas-ERP"
+      logicalProjectContainer="/"/>
   <description></description>
 </setup:ProjectCatalog>
