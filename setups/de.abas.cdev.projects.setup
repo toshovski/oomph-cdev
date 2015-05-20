@@ -235,17 +235,12 @@
     <requirement
         name="org.eclipse.pde.api.tools.ee.feature.feature.group"
         optional="true"/>
-    <requirement
-        name="com.googlecode.cppcheclipse.feature.feature.group"
-        versionRange="1.0.0"/>
     <repository
         url="http://download.eclipse.org/modeling/emf/emf/updates/nightly/core"/>
     <repository
         url="http://download.eclipse.org/egit/updates-stable-nightly"/>
     <repository
         url="http://download.eclipse.org/mylyn/snapshots/weekly"/>
-    <repository
-        url="http://cppcheclipse.eclipselabs.org.codespot.com/svn/update/"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
@@ -266,7 +261,7 @@
   <project name="GeneralContainer"
       label="General">
     <project
-        href="CdevProject.setup#/"/>
+        name="de.abas.cdev.projects.setup"/>
   </project>
   <description></description>
 </setup:ProjectCatalog>
