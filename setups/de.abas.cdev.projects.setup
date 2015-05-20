@@ -260,6 +260,13 @@
   </setupTask>
   <project name="abas.erp"
       label="abas-ERP"
-      logicalProjectContainer="/"/>
+      logicalProjectContainer="/">
+    <project
+        name="test"
+        label="test"
+        logicalProjectContainer="/">
+      <description>tra lala </description>
+    </project>
+  </project>
   <description></description>
 </setup:ProjectCatalog>
