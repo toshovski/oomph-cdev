@@ -312,7 +312,7 @@
       xsi:type="setup.p2:P2Task"
       label="3th Party C-Tools">
     <requirement
-        name="com.googlecode.cppchecklipse.feature.feature.group"/>
+        name="com.googlecode.cppcheclipse.feature.feature.group"/>
     <requirement
         name="com.chookapp.org.Bracketeer.feature.group"/>
     <requirement
