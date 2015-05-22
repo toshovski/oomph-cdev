@@ -312,7 +312,7 @@
       xsi:type="setup.p2:P2Task"
       label="3th Party C-Tools">
     <requirement
-        name="com.googlecode.cppcheclipse.feature.feature.group"/>
+        name="com.googlecode.cppchecklipse.feature.feature.group"/>
     <requirement
         name="com.chookapp.org.Bracketeer.feature.group"/>
     <requirement
@@ -320,7 +320,7 @@
     <requirement
         name="com.chookapp.org.OverviewRulerBackground.feature.group"/>
     <requirement
-        name="com.google.elt.feature.group"/>
+        name="com.google.eclipse.elt.feature.group"/>
     <requirement
         name="org.gna.eclox.feature.group"/>
     <requirement
