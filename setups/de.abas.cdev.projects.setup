@@ -308,6 +308,32 @@
           value="Entwicklungsumgebung"/>
     </setupTask>
   </setupTask>
+  <setupTask
+      xsi:type="setup.p2:P2Task"
+      label="3th Party C-Tools">
+    <requirement
+        name="com.googlecode.cppchecklipse.feature.feature.group"/>
+    <requirement
+        name="com.chookapp.org.Bracketeer.feature.group"/>
+    <requirement
+        name="com.chookapp.org.BracketeerCDT.feature.group"/>
+    <requirement
+        name="com.chookapp.org.OverviewRulerBackground.feature.group"/>
+    <requirement
+        name="com.google.elt.feature.group"/>
+    <requirement
+        name="org.gna.eclox.feature.group"/>
+    <requirement
+        name="org.gna.eclox.hot.feature.group"/>
+    <repository
+        url="http://cppcheclipse.eclipselabs.org.codespot.com/svn/update/"/>
+    <repository
+        url="http://chookapp.github.com/ChookappUpdateSite/"/>
+    <repository
+        url="http://elt.googlecode.com/git/update-site"/>
+    <repository
+        url="http://download.gna.org/eclox/update"/>
+  </setupTask>
   <project name="cdt"
       label="CDT">
     <setupTask
