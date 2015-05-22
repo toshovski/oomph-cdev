@@ -411,21 +411,21 @@
         </description>
       </setupTask>
       <setupTask
-          xsi:type="projects:ProjectsImportTask">
-        <sourceLocator
-            rootFolder="${git.clone.gitcentral.erp.location}"
-            locateNestedProjects="true"/>
-      </setupTask>
-      <setupTask
           xsi:type="setup:ResourceCreationTask"
           id="add.stupid.content"
           content="some stupid content&#xA;"
-          targetURL="${workspace.location|uri}/setups/test.txt"
+          targetURL="${git.clone.gitcentral.erp.location}/setups/test.txt"
           encoding="utf-8">
         <description>
           Add stupid content
 
         </description>
+      </setupTask>
+      <setupTask
+          xsi:type="projects:ProjectsImportTask">
+        <sourceLocator
+            rootFolder="${git.clone.gitcentral.erp.location}"
+            locateNestedProjects="true"/>
       </setupTask>
     </stream>
     <logicalProjectContainer
