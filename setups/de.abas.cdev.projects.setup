@@ -335,7 +335,7 @@
         url="http://download.gna.org/eclox/update"/>
   </setupTask>
   <project name="cdt"
-      label="CDT">
+      label="abas C/C++ Development Tools">
     <setupTask
         xsi:type="setup.p2:P2Task">
       <requirement
@@ -390,34 +390,8 @@
           remoteURI="https://github.com/toshovski/oomph-cdev.git"
           pushURI="https://github.com/toshovski/oomph-cdev.git"
           checkoutBranch="master">
-        <annotation
-            source="http://www.eclipse.org/oomph/setup/InducedChoices">
-          <detail
-              key="inherit">
-            <value>eclipse.git.gerrit.remoteURIs</value>
-          </detail>
-          <detail
-              key="label">
-            <value>${scope.project.label} Git or Gerrit Repository</value>
-          </detail>
-          <detail
-              key="target">
-            <value>remoteURI</value>
-          </detail>
-        </annotation>
         <description>
           Git Central erp.git repository
-
-        </description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:ResourceCreationTask"
-          id="add.stupid.content"
-          content="some stupid content&#xA;"
-          targetURL="${git.clone.gitcentral.erp.location}/setups/test.txt"
-          encoding="utf-8">
-        <description>
-          Add stupid content
 
         </description>
       </setupTask>
