@@ -382,6 +382,12 @@
         name="eclipse.target.platform"
         defaultValue="Luna"
         storageURI="scope://Workspace"/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="${git.clone.gitcentral.erp}"
+        value="${git.clone.gitcentral.erp.location}/setups/test.txt"
+        defaultValue="${git.clone.gitcentral.erp.location}/setups/test.txt"
+        label="git clone central location"/>
     <stream
         name="master">
       <setupTask
