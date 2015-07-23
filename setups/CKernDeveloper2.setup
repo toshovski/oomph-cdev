@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup:Project
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:git="http://www.eclipse.org/oomph/setup/git/1.0"
+    xmlns:projects="http://www.eclipse.org/oomph/setup/projects/1.0"
+    xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
+    xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore"
+    name="c.kern.developer"
+    label="C-Kern Developer">
+  <setupTask
+      xsi:type="setup.p2:P2Task">
+    <requirement
+        name="org.eclipse.pde.api.tools.ee.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.swtbot.ide.feature.group"/>
+    <requirement
+        name="org.eclipse.swtbot.generator.feature.feature.group"/>
+    <repository
+        url="http://download.eclipse.org/technology/swtbot/releases/latest"/>
+    <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.p2:P2Task"
+      label="3th Party C-Tools">
+    <requirement
+        name="com.googlecode.cppcheclipse.feature.feature.group"/>
+    <requirement
+        name="com.chookapp.org.Bracketeer.feature.group"/>
+    <requirement
+        name="com.chookapp.org.BracketeerCDT.feature.group"/>
+    <requirement
+        name="com.chookapp.org.OverviewRulerBackground.feature.group"/>
+    <requirement
+        name="com.google.eclipse.elt.feature.group"/>
+    <requirement
+        name="org.gna.eclox.feature.group"/>
+    <requirement
+        name="org.gna.eclox.hot.feature.group"/>
+    <requirement
+        name="de.abas.charset.s3.feature.feature.group"/>
+    <repository
+        url="http://cppcheclipse.eclipselabs.org.codespot.com/svn/update/"/>
+    <repository
+        url="http://chookapp.github.com/ChookappUpdateSite/"/>
+    <repository
+        url="http://elt.googlecode.com/git/update-site"/>
+    <repository
+        url="http://download.gna.org/eclox/update"/>
+    <repository
+        url="http://ardapedia.abas.de/p2_internal/abas/kepler/1.x.x/de.abas.charset.s3/"/>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:EclipseIniTask"
+      id="heap"
+      option="-Xmx"
+      value="1g"
+      vm="true">
+    <description>Set the heap space needed to work with the projects of ${scope.project.label}</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:EclipseIniTask"
+      option="-XX:MaxPermSize="
+      value="256m"
+      vm="true">
+    <description>Set the perm size needed to work with the projects of ${scope.project.label}</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:EclipseIniTask"
+      option="-Xbootclasspath"
+      value="/a:plugins/abas-s3charset.jar"
+      vm="true">
+    <description>Set the perm size needed to work with the projects of ${scope.project.label}</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:ResourceCreationTask"
+      excludedTriggers="STARTUP MANUAL"
+      content="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;section name=&quot;Workbench&quot;>&#xD;&#xA;&#x9;&lt;section name=&quot;org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart&quot;>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;true&quot; key=&quot;group_libraries&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;false&quot; key=&quot;linkWithEditor&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;2&quot; key=&quot;layout&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;2&quot; key=&quot;rootMode&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;packageExplorer configured=&amp;quot;true&amp;quot; group_libraries=&amp;quot;1&amp;quot; layout=&amp;quot;2&amp;quot; linkWithEditor=&amp;quot;0&amp;quot; rootMode=&amp;quot;2&amp;quot; sortWorkingSets=&amp;quot;false&amp;quot; workingSetName=&amp;quot;&amp;quot;&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;workingSet editPageId=&amp;quot;org.eclipse.jdt.internal.ui.OthersWorkingSet&amp;quot; factoryID=&amp;quot;org.eclipse.ui.internal.WorkingSetFactory&amp;quot; id=&amp;quot;1382792884467_1&amp;quot; label=&amp;quot;Other Projects&amp;quot; name=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;activeWorkingSet workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;allWorkingSets workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/packageExplorer&amp;gt;&quot; key=&quot;memento&quot;/>&#xD;&#xA;&#x9;&lt;/section>&#xD;&#xA;&lt;/section>&#xD;&#xA;"
+      targetURL="${workspace.location|uri}/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml"
+      encoding="UTF-8">
+    <description>Initialize JDT's package explorer to show working sets as its root objects</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:VariableTask"
+      name="eclipse.target.platform"
+      defaultValue="Mars"
+      storageURI="scope://Workspace"
+      label="Eclipse Version"/>
+  <setupTask
+      xsi:type="setup:VariableTask"
+      name="git.clone.gitcentral.erptools"
+      value="git://gitcentral/erp/erptools.git"/>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      name="Window Preferences">
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="org.eclipse.pde.api.tools">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.pde.api.tools/missing_default_api_profile"
+          value="Ignore"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="Setup Mylyn">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.mylyn.team.ui/org.eclipse.mylyn.team.commit.template"
+          value="[$${task.key}] $${task.description}&#xD;&#xA;&#xD;&#xA;$${task.url}"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        id="org.eclipse.cdt.ui"
+        name="Folding Code Settings">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.cdt.ui/editor_folding_preprocessor_enabled"
+          value="true"/>
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.cdt.ui/editor_folding_statements"
+          value="true"/>
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.ui.editors/spellingEnabled"
+          value="false"/>
+      <description>
+        Folding Code Settings
+
+      </description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        id="change.assicuated.file.extensions"
+        name="Change Associated File extensions">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.ui.workbench/editors"
+          value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>${0xA}&lt;editors>${0xA}&lt;descriptor class=&quot;org.eclipse.cdt.autotools.ui.editors.AutoconfEditor&quot; id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot; image=&quot;icons/autoconf.gif&quot; internal=&quot;true&quot; label=&quot;Autoconf Editor&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.cdt.autotools.ui&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl&quot; id=&quot;org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID&quot; image=&quot;icons/DDiagram.gif&quot; internal=&quot;true&quot; label=&quot;Sirius Diagram Editing&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.sirius.diagram.ui&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor&quot; id=&quot;org.eclipse.sirius.tree.ui.EditorID&quot; image=&quot;icons/full/obj16/TreeDescription.gif&quot; internal=&quot;true&quot; label=&quot;DTree editor&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.sirius.tree.ui&quot;/>${0xA}&lt;descriptor id=&quot;org.eclipse.linuxtools.gcov.editor&quot; image=&quot;icons/toggle.gif&quot; internal=&quot;false&quot; label=&quot;Gcov Editor&quot; launcher=&quot;org.eclipse.linuxtools.internal.gcov.action.OpenGCAction&quot; openMode=&quot;4&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.linuxtools.gcov.core&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.cdt.internal.autotools.ui.editors.automake.AutomakeEditor&quot; id=&quot;org.eclipse.cdt.autotools.ui.editors.AutomakeEditor&quot; image=&quot;icons/automake.gif&quot; internal=&quot;true&quot; label=&quot;AutomakeEditor&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.cdt.autotools.ui&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.ui.editors.text.TextEditor&quot; id=&quot;org.eclipse.sirius.ui.fakeeditoronlyforicon&quot; image=&quot;icons/obj16/SiriusFile.gif&quot; internal=&quot;true&quot; label=&quot;Text editor&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.sirius.ui&quot;/>${0xA}&lt;descriptor id=&quot;org.eclipse.ui.browser.editorSupport&quot; image=&quot;$nl$/icons/obj16/internal_browser.gif&quot; internal=&quot;false&quot; label=&quot;Web Browser&quot; launcher=&quot;org.eclipse.ui.internal.browser.BrowserLauncher&quot; openMode=&quot;4&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.ui.browser&quot;/>${0xA}&lt;descriptor id=&quot;org.eclipse.linuxtools.gprof.editor.single&quot; image=&quot;icons/toggle.gif&quot; internal=&quot;false&quot; label=&quot;Gprof Editor&quot; launcher=&quot;org.eclipse.linuxtools.internal.gprof.action.OpenGmonAction&quot; openMode=&quot;4&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.linuxtools.gprof&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.linuxtools.internal.valgrind.ui.editor.SuppressionsEditor&quot; id=&quot;org.eclipse.linuxtools.valgrind.editor.suppEditor&quot; image=&quot;icons/valgrind-supp-icon.png&quot; internal=&quot;true&quot; label=&quot;Suppressions Editor&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.linuxtools.valgrind.ui.editor&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.oomph.workingsets.presentation.WorkingSetsEditor&quot; id=&quot;org.eclipse.oomph.workingsets.presentation.WorkingSetsEditorID&quot; image=&quot;icons/full/obj16/WorkingSetsModelFile.gif&quot; internal=&quot;true&quot; label=&quot;WorkingSets Editor&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.oomph.workingsets.editor&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.linuxtools.rpm.ui.editor.SpecfileEditor&quot; id=&quot;org.eclipse.linuxtools.rpm.ui.editor.SpecfileEditor&quot; image=&quot;icons/rpm.gif&quot; internal=&quot;true&quot; label=&quot;Specfile Editor&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.linuxtools.rpm.ui.editor&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.linuxtools.internal.rpm.ui.editor.forms.SpecfileFormEditor&quot; id=&quot;org.eclipse.linuxtools.rpm.ui.editor.forms.SpecfileFormEditor&quot; image=&quot;icons/rpm.gif&quot; internal=&quot;true&quot; label=&quot;Specfile Form Editor&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.linuxtools.rpm.ui.editor&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.oomph.targlets.presentation.TargletEditor&quot; id=&quot;org.eclipse.oomph.targlets.presentation.CDefEditorID&quot; image=&quot;icons/full/obj16/cdef_file.gif&quot; internal=&quot;true&quot; label=&quot;Component Definition Editor&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.oomph.targlets.editor&quot;/>${0xA}&lt;descriptor id=&quot;org.eclipse.jdt.ui.JARDescEditor&quot; image=&quot;$nl$/icons/full/obj16/jar_desc_obj.gif&quot; internal=&quot;false&quot; label=&quot;JAR Export Wizard&quot; launcher=&quot;org.eclipse.jdt.internal.ui.jarpackager.OpenJarExportWizardEditorLauncher&quot; openMode=&quot;4&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.jdt.ui&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.linuxtools.internal.changelog.core.editors.ChangeLogEditor&quot; id=&quot;org.eclipse.linuxtools.changelog.core.editor6&quot; image=&quot;icons/file_obj.gif&quot; internal=&quot;true&quot; label=&quot;ChangeLog Editor&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.linuxtools.changelog.core&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.sirius.table.ui.tools.internal.editor.DTableEditionEditor&quot; id=&quot;org.eclipse.sirius.table.ui.EditionTableEditorID&quot; image=&quot;icons/full/obj16/EditionTableDescription.gif&quot; internal=&quot;true&quot; label=&quot;EditionTable editor&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.sirius.table.ui&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.sirius.table.ui.tools.internal.editor.DTableCrossEditor&quot; id=&quot;org.eclipse.sirius.table.ui.CrossTableEditorID&quot; image=&quot;icons/full/obj16/CrossTableDescription.gif&quot; internal=&quot;true&quot; label=&quot;CrossTable editor&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.sirius.table.ui&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.oomph.setup.presentation.SetupEditor&quot; id=&quot;org.eclipse.oomph.setup.presentation.SetupEditorID&quot; image=&quot;icons/full/obj16/SetupModelFile.gif&quot; internal=&quot;true&quot; label=&quot;Setup Editor&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.oomph.setup.editor&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.jdt.internal.ui.javaeditor.ClassFileEditor&quot; id=&quot;org.eclipse.jdt.ui.ClassFileEditorNoSource&quot; image=&quot;$nl$/icons/full/obj16/classf_obj.gif&quot; internal=&quot;true&quot; label=&quot;Class File Viewer&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.jdt.ui&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.oomph.targlets.presentation.TargletEditor&quot; id=&quot;org.eclipse.oomph.targlets.presentation.TargletEditorID&quot; image=&quot;icons/full/obj16/TargletModelFile.gif&quot; internal=&quot;true&quot; label=&quot;Targlet Model Editor&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.oomph.targlets.editor&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.oomph.targlets.presentation.TargletEditor&quot; id=&quot;org.eclipse.oomph.targlets.presentation.CExtEditorID&quot; image=&quot;icons/full/obj16/cext_file.gif&quot; internal=&quot;true&quot; label=&quot;Component Extension Editor&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.oomph.targlets.editor&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.jdt.internal.debug.ui.snippeteditor.JavaSnippetEditor&quot; id=&quot;org.eclipse.jdt.debug.ui.SnippetEditor&quot; image=&quot;$nl$/icons/full/obj16/jsbook_obj.gif&quot; internal=&quot;true&quot; label=&quot;Scrapbook&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.jdt.debug.ui&quot;/>${0xA}&lt;descriptor class=&quot;org.eclipse.pde.internal.ui.samples.SampleEditor&quot; id=&quot;org.eclipse.pde.ui.sampleEditor&quot; image=&quot;$nl$/icons/obj16/build_exec.gif&quot; internal=&quot;true&quot; label=&quot;Code Sample Editor&quot; openMode=&quot;1&quot; open_in_place=&quot;false&quot; plugin=&quot;org.eclipse.pde.ui&quot;/>${0xA}&lt;/editors>"/>
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.ui.workbench/resourcetypes"
+          value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>${0xA}&lt;editors version=&quot;3.1&quot;>${0xA}&lt;info extension=&quot;m4&quot; name=&quot;ltoptions&quot;>${0xA}&lt;editor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;ddiagram&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;dtree&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.sirius.tree.ui.EditorID&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.sirius.tree.ui.EditorID&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;m4&quot; name=&quot;ltdl&quot;>${0xA}&lt;editor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;m4&quot; name=&quot;ltgcc&quot;>${0xA}&lt;editor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;gcno&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.linuxtools.gcov.editor&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.linuxtools.gcov.editor&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;in&quot; name=&quot;Makefile&quot;>${0xA}&lt;editor id=&quot;org.eclipse.cdt.autotools.ui.editors.AutomakeEditor&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.cdt.autotools.ui.editors.AutomakeEditor&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;sh&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.sirius.ui.fakeeditoronlyforicon&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.sirius.ui.fakeeditoronlyforicon&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;html&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.ui.browser.editorSupport&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;out&quot; name=&quot;gmon&quot;>${0xA}&lt;editor id=&quot;org.eclipse.linuxtools.gprof.editor.single&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.linuxtools.gprof.editor.single&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;m4&quot; name=&quot;ltsugar&quot;>${0xA}&lt;editor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;sum&quot; name=&quot;gmon&quot;>${0xA}&lt;editor id=&quot;org.eclipse.linuxtools.gprof.editor.single&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.linuxtools.gprof.editor.single&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;supp&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.linuxtools.valgrind.editor.suppEditor&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;shtml&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.ui.browser.editorSupport&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;workingsets&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.oomph.workingsets.presentation.WorkingSetsEditorID&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;m4&quot; name=&quot;libtool&quot;>${0xA}&lt;editor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;spec&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.linuxtools.rpm.ui.editor.SpecfileEditor&quot;/>${0xA}&lt;editor id=&quot;org.eclipse.linuxtools.rpm.ui.editor.forms.SpecfileFormEditor&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;awk&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.sirius.ui.fakeeditoronlyforicon&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.sirius.ui.fakeeditoronlyforicon&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;m4&quot; name=&quot;acinclude&quot;>${0xA}&lt;editor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;spec2&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.linuxtools.rpm.ui.editor.SpecfileEditor&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;m4&quot; name=&quot;ltversion&quot;>${0xA}&lt;editor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;am&quot; name=&quot;Makefile&quot;>${0xA}&lt;editor id=&quot;org.eclipse.cdt.autotools.ui.editors.AutomakeEditor&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.cdt.autotools.ui.editors.AutomakeEditor&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;ac&quot; name=&quot;configure&quot;>${0xA}&lt;editor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;am&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.cdt.autotools.ui.editors.AutomakeEditor&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.cdt.autotools.ui.editors.AutomakeEditor&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;in&quot; name=&quot;configure&quot;>${0xA}&lt;editor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;def&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.oomph.targlets.presentation.CDefEditorID&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;jardesc&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.jdt.ui.JARDescEditor&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.jdt.ui.JARDescEditor&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;&quot; name=&quot;ChangeLog&quot;>${0xA}&lt;editor id=&quot;org.eclipse.linuxtools.changelog.core.editor6&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.linuxtools.changelog.core.editor6&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;dtable&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.sirius.table.ui.EditionTableEditorID&quot;/>${0xA}&lt;editor id=&quot;org.eclipse.sirius.table.ui.CrossTableEditorID&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.sirius.table.ui.EditionTableEditorID&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;setup&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.oomph.setup.presentation.SetupEditorID&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;m4&quot; name=&quot;lt~obsolete&quot;>${0xA}&lt;editor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;class without source&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.jdt.ui.ClassFileEditorNoSource&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;targlet&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.oomph.targlets.presentation.TargletEditorID&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;gcda&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.linuxtools.gcov.editor&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.linuxtools.gcov.editor&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;m4&quot; name=&quot;aclocal&quot;>${0xA}&lt;editor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.cdt.autotools.ui.editor.autoconf&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;ext&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.oomph.targlets.presentation.CExtEditorID&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;htm&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.ui.browser.editorSupport&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;jpage&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.jdt.debug.ui.SnippetEditor&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;properties&quot; name=&quot;sample&quot;>${0xA}&lt;editor id=&quot;org.eclipse.pde.ui.sampleEditor&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.pde.ui.sampleEditor&quot;/>${0xA}&lt;/info>${0xA}&lt;info extension=&quot;aird&quot; name=&quot;*&quot;>${0xA}&lt;editor id=&quot;org.eclipse.sirius.ui.fakeeditoronlyforicon&quot;/>${0xA}&lt;defaultEditor id=&quot;org.eclipse.sirius.ui.fakeeditoronlyforicon&quot;/>${0xA}&lt;/info>${0xA}&lt;/editors>"/>
+      <description>Change Associated File extensions</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="Workspace Name">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.ui.ide/WORKSPACE_NAME"
+          value="Entwicklungsumgebung"/>
+    </setupTask>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:VariableTask"
+      name="HOMESRC"
+      value="System.getenv($HOMESRC)"
+      label="HOME SRC"/>
+  <stream name="master">
+    <setupTask
+        xsi:type="git:GitCloneTask"
+        id="git.clone.erptools"
+        remoteURI="git://gitcentral/erp/erptools.git"
+        pushURI="git://gitcentral/erp/erptools.git"
+        checkoutBranch="master">
+      <description>Clone erptools.git repository</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="Copy .project &amp; .cproject">
+      <setupTask
+          xsi:type="setup:ResourceCopyTask"
+          id="copy.project"
+          sourceURL="${git.clone.erptools.location|uri}/lokal/entwicklung/eclipse/settings/.project"
+          targetURL="${HOMESRC|uri}/.project"/>
+      <setupTask
+          xsi:type="setup:ResourceCopyTask"
+          id="copy.cproject"
+          sourceURL="${git.clone.erptools.location|uri}/lokal/entwicklung/eclipse/settings/.cproject"
+          targetURL="${HOMESRC|uri}/.cproject"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        id="plugin.settings"
+        name="Copy Plugin settings to project">
+      <setupTask
+          xsi:type="setup:ResourceCopyTask"
+          id="org.eclipse.cdt.codan.core.prefs"
+          sourceURL="${git.clone.erptools.location|uri}/lokal/entwicklung/eclipse/settings/.settings/org.eclipse.cdt.codan.core.prefs"
+          targetURL="${HOMESRC|uri}/.settings/org.eclipse.cdt.codan.core.prefs">
+        <description>Copy plugin settings into workspace</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:ResourceCopyTask"
+          id="copy.org.eclipse.core.resources.prefs"
+          sourceURL="${git.clone.erptools.location|uri}/lokal/entwicklung/eclipse/settings/.settings/org.eclipse.core.resources.prefs"
+          targetURL="${HOMESRC|uri}/.settings/org.eclipse.core.resources.prefs">
+        <description>Copy plugin settings into workspace</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:ResourceCopyTask"
+          id="copy.org.eclipse.core.runtime.prefs"
+          sourceURL="${git.clone.erptools.location|uri}/lokal/entwicklung/eclipse/settings/.settings/org.eclipse.core.runtime.prefs"
+          targetURL="${HOMESRC|uri}/.settings/org.eclipse.core.runtime.prefs">
+        <description>Copy plugin settings into workspace</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:ResourceCopyTask"
+          id="copy.org.eclipse.ltk.core.refactoring.prefs"
+          sourceURL="${git.clone.erptools.location|uri}/lokal/entwicklung/eclipse/settings/.settings/org.eclipse.ltk.core.refactoring.prefs"
+          targetURL="${HOMESRC|uri}/.settings/sorg.eclipse.ltk.core.refactoring.prefs">
+        <description>Copy plugin settings into workspace</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:ResourceCopyTask"
+          id="copy.org.eclipse.mylyn.tasks.ui.prefs"
+          sourceURL="${git.clone.erptools.location|uri}/lokal/entwicklung/eclipse/settings/.settings/org.eclipse.mylyn.tasks.ui.prefs"
+          targetURL="${HOMESRC|uri}/.settings/org.eclipse.mylyn.tasks.ui.prefs">
+        <description>Copy plugin settings into workspace</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:ResourceCopyTask"
+          id="copy.settings"
+          sourceURL="${git.clone.erptools.location|uri}/lokal/entwicklung/eclipse/settings/.settings/language.settings.xml"
+          targetURL="${HOMESRC|uri}/.settings/language.settings.xml">
+        <description>Copy plugin settings into workspace</description>
+      </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="projects:ProjectsImportTask"
+        id="Import erp.git">
+      <sourceLocator
+          rootFolder="${HOMESRC}"/>
+    </setupTask>
+  </stream>
+  <logicalProjectContainer
+      xsi:type="setup:Project"
+      href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']/@projects[name='user.project']"/>
+  <description>C-Kern Developer</description>
+</setup:Project>

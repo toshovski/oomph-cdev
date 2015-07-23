@@ -5,11 +5,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:git="http://www.eclipse.org/oomph/setup/git/1.0"
     xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
-    xmlns:projects="http://www.eclipse.org/oomph/setup/projects/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
     xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore"
     name="org.eclipse"
     label="abas-Projects">
   <setupTask
@@ -350,7 +349,7 @@
     </setupTask>
     <setupTask
         xsi:type="setup:EclipseIniTask"
-        id=""
+        id="heap"
         option="-Xmx"
         value="1g"
         vm="true">
@@ -388,13 +387,18 @@
         value="${git.clone.gitcentral.erp.location}"
         defaultValue="${git.clone.gitcentral.erp.location}"
         label="git clone central location"/>
+    <setupTask
+        xsi:type="setup:StringSubstitutionTask"
+        id=""
+        name="erp.git.location"
+        value="&quot;&quot;"/>
     <stream
         name="master">
       <setupTask
           xsi:type="setup:ResourceCreationTask"
           id="project"
           excludedTriggers="BOOTSTRAP"
-          predecessor="git.clone.gitcentral.erp"
+          predecessor="git.clone.gitcentral.erptools"
           content="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;projectDescription>&#xA;&#x9;&lt;name>project&lt;/name>&#xA;&#x9;&lt;comment>&lt;/comment>&#xA;&#x9;&lt;projects>&#xA;&#x9;&lt;/projects>&#xA;&#x9;&lt;buildSpec>&#xA;&#x9;&#x9;&lt;buildCommand>&#xA;&#x9;&#x9;&#x9;&lt;name>org.eclipse.cdt.managedbuilder.core.genmakebuilder&lt;/name>&#xA;&#x9;&#x9;&#x9;&lt;triggers>clean,full,incremental,&lt;/triggers>&#xA;&#x9;&#x9;&#x9;&lt;arguments>&#xA;&#x9;&#x9;&#x9;&lt;/arguments>&#xA;&#x9;&#x9;&lt;/buildCommand>&#xA;&#x9;&#x9;&lt;buildCommand>&#xA;&#x9;&#x9;&#x9;&lt;name>org.eclipse.cdt.managedbuilder.core.ScannerConfigBuilder&lt;/name>&#xA;&#x9;&#x9;&#x9;&lt;triggers>full,incremental,&lt;/triggers>&#xA;&#x9;&#x9;&#x9;&lt;arguments>&#xA;&#x9;&#x9;&#x9;&lt;/arguments>&#xA;&#x9;&#x9;&lt;/buildCommand>&#xA;&#x9;&lt;/buildSpec>&#xA;&#x9;&lt;natures>&#xA;&#x9;&#x9;&lt;nature>org.eclipse.cdt.core.cnature&lt;/nature>&#xA;&#x9;&#x9;&lt;nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature&lt;/nature>&#xA;&#x9;&#x9;&lt;nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature&lt;/nature>&#xA;&#x9;&lt;/natures>&#xA;&lt;/projectDescription>"
           targetURL="${git.clone.gitcentral.erp.location|uri}/.project"
           encoding="UTF-8">
@@ -402,20 +406,32 @@
       </setupTask>
       <setupTask
           xsi:type="git:GitCloneTask"
-          id="git.clone.gitcentral.erp"
-          remoteURI="git://gitcentral/erp.git"
-          pushURI="git://gitcentral/erp.git"
+          id="git.clone.gitcentral.erptools"
+          remoteURI="git://gitcentral/erp/erptools.git"
+          pushURI="git://gitcentral/erp/erptools.git"
           checkoutBranch="master">
-        <description>
-          Git Central erp.git repository
-
-        </description>
+        <description>Clone erptools.git repository</description>
       </setupTask>
       <setupTask
-          xsi:type="projects:ProjectsImportTask">
-        <sourceLocator
-            rootFolder="${git.clone.gitcentral.erp.location}"
-            locateNestedProjects="true"/>
+          xsi:type="setup:CompoundTask"
+          name="Copy .project &amp; .cproject">
+        <setupTask
+            xsi:type="setup:ResourceCopyTask"
+            sourceURL="${git.clone.gitcentral.erptools}/lokal/entwicklung/eclipse/settings/.project"
+            targetURL="${erp.git.location}/.project"/>
+        <setupTask
+            xsi:type="setup:ResourceCopyTask"
+            sourceURL="${git.clone.gitcentral.erptools}/lokal/entwicklung/eclipse/settings/.project"
+            targetURL="${erp.git.location}/.project"/>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:CompoundTask"
+          id="plugin.settings"
+          name="Copy Plugin settings to workspace">
+        <setupTask
+            xsi:type="setup:ResourceCopyTask"
+            sourceURL="${git.clone.gitcentral.erptools}/lokal/entwicklung/eclipse/settings/.settings/"
+            targetURL="${workspace.location|uri}/"/>
       </setupTask>
     </stream>
     <logicalProjectContainer
